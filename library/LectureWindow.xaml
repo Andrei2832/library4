@@ -1,0 +1,183 @@
+﻿<Window x:Class="library.LectureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:library"
+        xmlns:local="clr-namespace:library"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="LectureWindow" Height="720" Width="1280" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent">
+
+    <Window.DataContext>
+        <viewmodel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Width="Auto" Height="Auto" 
+            BorderBrush="Black"
+            Background="#FF4A4C4E"
+          BorderThickness="1"
+          CornerRadius="10,10,10,10">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="12*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="ButMenu" 
+                    Margin="0,0,130,670" 
+                    Click="ButMenu_Click"
+                    Background="Transparent"
+                    BorderBrush="Transparent" Style="{StaticResource jB}">
+                <Image Source="Pic/Menu.png"/>
+            </Button>
+            
+            <Button Grid.Column="1" x:Name="close" Style="{StaticResource jB}" Background="Transparent" BorderBrush="Transparent" Height="25" Width="25" VerticalAlignment="Top" HorizontalAlignment="Right" Click="close_Click">
+                <Image Source="Pic/close.png"></Image>
+            </Button>
+            
+            <Label Content="Лекции:" HorizontalAlignment="Center" Margin="50,0,0,0" FontSize="28" Foreground="#FFE2F8F4" FontStyle="Italic" />
+
+            
+            <ListBox x:Name="ListLecture" 
+                     Grid.Column="0" 
+                     HorizontalContentAlignment="Stretch" 
+                     ItemsSource="{Binding pers}" 
+                     Background="#FF57595B"
+                     BorderBrush="Transparent"
+                     Margin="0,50,0,60">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <UniformGrid Columns="0">
+                            <UniformGrid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="TextAlignment" Value="Center"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="Control.IsMouseOver" Value="True">
+                                            <Setter Property="Control.FontWeight" Value="Bold" />
+                                            <Setter Property="Control.Foreground" Value="Transparent"/>
+                                        </Trigger>
+
+                                    </Style.Triggers>
+                                </Style>
+                            </UniformGrid.Resources>
+
+                            <Button x:Name="listboxbut"
+                                Style="{StaticResource jB}"
+                                Background="Transparent" 
+                                BorderBrush="Transparent" 
+                                Click="Button_Click" >
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Uid="{Binding id}" 
+                                                   Foreground="#FFE2F8F4" 
+                                                   FontSize="20" 
+                                                   Text="{Binding num, StringFormat=Лекция {0}}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            
+
+                        </UniformGrid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Label x:Name="Title"
+                   Grid.Column="1"
+                   Margin="20,20,20,650"
+                   FontSize="20"
+                   Foreground="#FFE2F8F4"
+                   />
+            <ScrollViewer x:Name="scrollLecture" 
+                          Grid.Column="1" 
+                          Margin="20,80,20,20"  
+                          Grid.RowSpan="2" 
+                          VerticalScrollBarVisibility="Hidden">
+
+                <TextBlock x:Name="TextLecture" 
+                           Foreground="White" 
+                           FontSize="18" 
+                           TextWrapping="Wrap">
+                </TextBlock>
+            </ScrollViewer>
+
+            <Button x:Name="testBut" 
+                    Margin="20,670,20,10" 
+                    Style="{StaticResource jB}"
+                    Background="#FF178CE5"
+                    Foreground="White"
+                    Content="ТЕСТ"
+                    FontSize="24"
+                    Click="testBut_Click"
+                    Visibility="Hidden">
+            </Button>
+
+            <TextBlock x:Name="textTest" 
+                       Margin="20,30,20,500" 
+                       Grid.Column="1" 
+                       Foreground="White" 
+                       FontSize="24" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Visibility="Hidden">
+            </TextBlock>
+
+            <StackPanel x:Name="testButtons"
+                        Grid.Column="1"
+                        Margin="20,250,20,30"
+                        Visibility="Hidden">
+                
+                <RadioButton x:Name="answerBut1" Checked="answer_Checked">
+                    <RadioButton.Content>
+                        <TextBlock x:Name="answerButText1" TextWrapping="Wrap" Foreground="White"/>
+                    </RadioButton.Content>
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </RadioButton.LayoutTransform>
+                </RadioButton>
+                
+                <RadioButton x:Name="answerBut2" FontSize="12" Foreground="White" Checked="answer_Checked">
+                    <RadioButton.Content>
+                        <TextBlock x:Name="answerButText2" TextWrapping="Wrap" Foreground="White"/>
+                    </RadioButton.Content>
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </RadioButton.LayoutTransform>
+                </RadioButton>
+                
+                <RadioButton x:Name="answerBut3" FontSize="12" Foreground="White" Checked="answer_Checked">
+                    <RadioButton.Content>
+                        <TextBlock x:Name="answerButText3" TextWrapping="Wrap" Foreground="White"/>
+                    </RadioButton.Content>
+                <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </RadioButton.LayoutTransform>
+                </RadioButton>
+                
+                <RadioButton x:Name="answerBut4" FontSize="12" Foreground="White" Checked="answer_Checked">
+                    <RadioButton.Content>
+                        <TextBlock x:Name="answerButText4" TextWrapping="Wrap" Foreground="White"/>
+                    </RadioButton.Content>
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </RadioButton.LayoutTransform>
+                </RadioButton>
+            </StackPanel>
+
+            <Button x:Name="checkAnswer"
+                    Grid.Column="1"
+                    Margin="900,650,20,20"
+                    Style="{StaticResource jB}"
+                    Background="#FF178CE5"
+                    Foreground="White"
+                    Content="Ответить"
+                    FontSize="24"
+                    Visibility="Hidden"
+                    Click="checkAnswer_Click"/>
+        </Grid>
+    </Border>
+</Window>

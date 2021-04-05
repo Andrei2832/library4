@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78671558111044d2a67bfaece862e0ff" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Customer" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Lecture" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.lectureCustomer" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Role" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Test" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.testsCustomer" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.FK__Customer__idRole__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__lectureCu__idCus__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__testsCust__idCus__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__lectureCu__idLec__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Test__idLecture__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__testsCust__idTes__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LibraryModel.View_1" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
